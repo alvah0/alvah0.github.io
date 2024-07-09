@@ -45,10 +45,11 @@ function calculate() {
     (velocity / 3.6) *
     ((velocity - windvelocity) / 3.6) ** 2 *
     (cda / 100);
-  const total = rollingresistance + gravity + aero;
+    const other = (aero+gravity+rollingresistance)*0.015
+  const total = rollingresistance + gravity + aero + other;
 
   let pro = 39079146.5512 / (total / riderweight) ** 5.54323725055;
-  if (pro > 3600) {
+  if (pro > 7200) {
     pro = "all day";
   } else if (pro < 1) {
     pro = "no can do";
@@ -64,6 +65,7 @@ function calculate() {
   document.getElementById("aeroresult").innerText = `Aero: ${aero.toFixed(
     2
   )} W`;
+  document.getElementById("otherresult").innerText = `Bike Efficiency: ${other.toFixed(2)} W`;
   document.getElementById("totalresult").innerText = `Total: ${total.toFixed(
     2
   )} W`;
@@ -83,11 +85,11 @@ function updateChart(rollingresistance, gravity, aero) {
   energyChart = new Chart(ctx, {
     type: "pie",
     data: {
-      labels: ["Rolling resistance", "Gravity", "Aero"],
+      labels: ["Rolling resistance", "Gravity", "Aero", "Bike Efficiency"],
       datasets: [
         {
-          data: [rollingresistance, gravity, aero],
-          backgroundColor: ["#ADD8E6", "#36a2eb", "#000080"],
+          data: [rollingresistance, gravity, aero, other],
+          backgroundColor: ["#ADD8E6", "#36a2eb", "#000080", "#301090"],
         },
       ],
     },
