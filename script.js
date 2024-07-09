@@ -45,7 +45,7 @@ function calculate() {
     (velocity / 3.6) *
     ((velocity - windvelocity) / 3.6) ** 2 *
     (cda / 100);
-    const other = (aero+gravity+rollingresistance)*0.015
+  const other = (aero+gravity+rollingresistance)*0.015
   const total = rollingresistance + gravity + aero + other;
 
   let pro = 39079146.5512 / (total / riderweight) ** 5.54323725055;
