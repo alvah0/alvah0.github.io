@@ -89,7 +89,7 @@ function updateChart(rollingresistance, gravity, aero, other) {
       datasets: [
         {
           data: [rollingresistance, gravity, aero, other],
-          backgroundColor: ["#ADD8E6", "#36a2eb", "#000080", "#301090"],
+          backgroundColor: ["#ADD8E6", "#36a2eb", "#000080", "#501090"],
         },
       ],
     },
