@@ -72,7 +72,7 @@ function calculate() {
   (document.getElementById(
     "pro"
   ).innerText = `Pro can hold that pace for: ${pro}`),
-    updateChart(rollingresistance, gravity, aero);
+    updateChart(rollingresistance, gravity, aero, other);
 }
 
 function updateChart(rollingresistance, gravity, aero) {
