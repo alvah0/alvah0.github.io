@@ -75,7 +75,7 @@ function calculate() {
     updateChart(rollingresistance, gravity, aero, other);
 }
 
-function updateChart(rollingresistance, gravity, aero) {
+function updateChart(rollingresistance, gravity, aero, other) {
   const ctx = document.getElementById("energyChart").getContext("2d");
 
   if (energyChart) {
