@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Simulation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tyre Speed</h1>
+        <div class="flex-container">
+            <div class="controls">
+                <div class="tooltip-container">
+                    <p3 for="riderpower">Rider Power (W): <span id="riderPowerValue">200</span></p3>
+                    <input type="number" id="riderpower" min="1" max="1000" value="200" oninput="updateRiderPowerValue(this.value)">
+                    <div class="tooltip">The power that the rider produces.</div>
+                </div>
+
+                <div class="tooltip-container">
+                    <p3 for="surface">Surface roughness: <span id="surfaceValue">4</span></p3>
+                    <input type="number" id="surface" min="0" max="10" value="4" oninput="updateSurfaceValue(this.value)">
+                    <div class="tooltip">0=track, 1-2=new asphalt, 3-4=old asphalt, 5-6=gravel, 7-8=singletrack, 9-10=sand</div>
+                </div>
+
+                <div class="tooltip-container">
+                    <p3>Inside of the tyre:</p3><br>
+                    <input type="radio" id="tube" name="inside" value="1" onclick="updateInnerValue(this.value)">
+                    <label for="tube">Tube</label><br>
+
+                    <input type="radio" id="tpu" name="inside" value="0.86" onclick="updateInnerValue(this.value)">
+                    <label for="tpu">TPU</label><br>
+
+                    <input type="radio" id="latex" name="inside" value="0.82" onclick="updateInnerValue(this.value)">
+                    <label for="latex">Latex</label><br>
+
+                    <input type="radio" id="tubeless" name="inside" value="0.77" onclick="updateInnerValue(this.value)">
+                    <label for="tubeless">Tubeless</label>
+                </div>
+                
+                <div class="tooltip-container">
+                    <p3>The tyre on the bike:</p3><br>
+                    <input type="radio" id="gp5000str25" name="crr" value='{"crr":0.0035186, "width":25}' >
+                    <label for="gp5000str25">GP5000STR 25mm</label><br>
+
+                    <input type="radio" id="gp5000str28" name="crr" value='{"crr":0.0035186, "width":28}' >
+                    <label for="gp5000str28">GP5000STR 28mm</label><br>
+
+                    <input type="radio" id="gp5000str30" name="crr" value='{"crr":0.0035844, "width":30}' >
+                    <label for="gp5000str30">GP5000STR 30mm</label><br>
+
+                    <input type="radio" id="gp5000str32" name="crr" value='{"crr":0.0036114, "width":32}'>
+                    <label for="gp5000str32">GP5000STR 32mm</label><br>
+
+                    <input type="radio" id="gp5000astr28" name="crr" value='{"crr":0.0043247, "width":28}' >
+                    <label for="gp5000astr28">GP5000ASTR 28mm</label><br>
+
+                    <input type="radio" id="gp5000astr30" name="crr" value='{"crr":0.0043331, "width":30}' >
+                    <label for="gp5000astr30">GP5000ASTR 30mm</label><br>
+
+                    <input type="radio" id="gp500025" name="crr" value='{"crr":0.0032186, "width":25}' >
+                    <label for="gp500025">GP5000 25mm</label><br>
+
+                    <input type="radio" id="gp500028" name="crr" value='{"crr":0.0032581, "width":28}' >
+                    <label for="gp500028">GP5000 28mm</label><br>
+
+                    <input type="radio" id="ultra25" name="crr" value='{"crr":0.0044100, "width":25}' >
+                    <label for="ultra25">Ultrasport III 25mm</label><br>
+
+                    <input type="radio" id="ultra28" name="crr" value='{"crr":0.0044100, "width":28}' >
+                    <label for="ultra28">Ultrasport III 28mm</label><br>
+
+                    <input type="radio" id="gator25" name="crr" value='{"crr":0.0060590, "width":25}' >
+                    <label for="gator25">Gatorskin 25mm</label><br>
+
+                    <input type="radio" id="gator28" name="crr" value='{"crr":0.0060600, "width":28}' >
+                    <label for="gator28">Gatorskin 28mm</label><br>
+
+                    <input type="radio" id="terras35" name="crr" value='{"crr":0.0063630, "width":35}' >
+                    <label for="terras35">Terra Speed 35mm</label><br>
+
+                    <input type="radio" id="terras40" name="crr" value='{"crr":0.0063630, "width":40}' >
+                    <label for="terras40">Terra Speed 40mm</label><br>
+
+                    <input type="radio" id="terras45" name="crr" value='{"crr":0.0063630, "width":45}' >
+                    <label for="terras45">Terra Speed 45mm</label><br>
+
+                    <input type="radio" id="terrat35" name="crr" value='{"crr":0.0077900, "width":35}' >
+                    <label for="terrat35">Terra Trail 35mm</label><br>
+
+                    <input type="radio" id="terrat40" name="crr" value='{"crr":0.0077900, "width":40}' >
+                    <label for="terrat40">Terra Trail 40mm</label><br>
+
+                    <input type="radio" id="terrat45" name="crr" value='{"crr":0.0077900, "width":45}' >
+                    <label for="terrat45">Terra Trail 45mm</label><br>
+
+                    <input type="radio" id="raceking55" name="crr" value='{"crr":0.0054000, "width":55}' >
+                    <label for="raceking55">Race King 55mm</label><br>
+
+                    <input type="radio" id="rekon57" name="crr" value='{"crr":0.0079400, "width":57}' >
+                    <label for="rekon57">Rekon EXO 57mm</label><br>
+
+                </div>
+
+
+                <button onclick="calculate()">Calculate</button>
+            </div>
+            <div class="output">
+                <h2>Results</h2>
+                <p id="result"></p>
+                <p id="rollingresult"></p>
+                <p id="aeroresult"></p>
+                <div class="image-container">
+                    <a href="tyrephysics.html">Explanation</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="tyres.js"></script>
+</body>
+</html>
