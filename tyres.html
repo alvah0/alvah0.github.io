@@ -12,13 +12,13 @@
         <div class="flex-container">
             <div class="controls">
                 <div class="tooltip-container">
-                    <p3 for="riderpower">Rider Power (W): <span id="riderPowerValue">200</span></p3>
+                    <p3 for="riderpower">Rider Power (W): <span id="riderPowerValue">200</span></p3><br>
                     <input type="number" id="riderpower" min="1" max="1000" value="200" oninput="updateRiderPowerValue(this.value)">
                     <div class="tooltip">The power that the rider produces.</div>
                 </div>
 
                 <div class="tooltip-container">
-                    <p3 for="surface">Surface roughness: <span id="surfaceValue">4</span></p3>
+                    <p3 for="surface">Surface roughness: <span id="surfaceValue">4</span></p3><br>
                     <input type="number" id="surface" min="0" max="10" value="4" oninput="updateSurfaceValue(this.value)">
                     <div class="tooltip">0=track, 1-2=new asphalt, 3-4=old asphalt, 5-6=gravel, 7-8=singletrack, 9-10=sand</div>
                 </div>

@@ -5,59 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Physics Simulation</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Cycling Watts</h1>
+        <h1>Rolling mass is a scam</h1>
         <div class="flex-container">
             <div class="controls">
                 <div class="tooltip-container">
-                    <label for="massradius">Diameter of mass (mm): <span id="massradiusValue">600</span></label>
-                    <input type="number" id="riderweight" min="1" max="800" value="600" oninput="updateRiderWeightValue(this.value)">
-                    <div class="tooltip">The weight of the rider in kilograms.</div>
+                    <label for="massdiameter">Diameter of mass (mm): <span id="massDiameterValue">620</span></label><br>
+                    <input type="number" id="massdiameter" min="1" max="800" value="620" oninput="updateMassDiameterValue(this.value)">
+                    <div class="tooltip">Diameter of mass.</div>
+                </div>
+
+                <div class="tooltip-container">
+                    <label for="tyrediameter">Diameter of tyre (mm): <span id="tyreDiameterValue">660</span></label><br>
+                    <input type="number" id="tyrediameter" min="1" max="800" value="660" oninput="updateTyreDiameterValue(this.value)">
+                    <div class="tooltip">Diameter of tyre.</div>
                 </div>
                 
                 <div class="tooltip-container">
-                    <label for="bikeweight">Bike Weight (kg): <span id="bikeweightValue">10</span></label>
-                    <input type="number" id="bikeweight" min="1" max="20" value="10" oninput="updateBikeWeightValue(this.value)">
-                    <div class="tooltip">The weight of the bike in kilograms.</div>
+                    <label for="rollingweight">Rolling mass one tyre (g): <span id="rollingWeightValue">1000</span></label><br>
+                    <input type="number" id="rollingweight" min="500" max="2000" value="1000" oninput="updateRollingWeightValue(this.value)">
+                    <div class="tooltip">The weight of the rolling mass.</div>
                 </div>
 
                 <div class="tooltip-container">
-                    <label for="velocity">Velocity (km/h): <span id="velocityValue">10</span></label>
-                    <input type="number" id="velocity" min="1" max="100" value="10" oninput="updateVelocityValue(this.value)">
-                    <div class="tooltip">Velocity of the bike</div>
+                    <label for="startvelocity">Start velocity (km/h): <span id="startVelocityValue">0</span></label><br>
+                    <input type="number" id="startvelocity" min="0" max="100" value="0" oninput="updateStartVelocityValue(this.value)">
+                    <div class="tooltip">Start velocity of the bike</div>
                 </div>
 
                 <div class="tooltip-container">
-                    <label for="windvelocity">Wind Velocity (km/h): <span id="windvelocityValue">0</span></label>
-                    <input type="number" id="windvelocity" min="-50" max="50" value="0" oninput="updateWindVelocityValue(this.value)">
-                    <div class="tooltip">The wind velocity: Negative tailwind, Positive headwind</div>
+                    <label for="endvelocity">End velocity (km/h): <span id="endVelocityValue">10</span></label><br>
+                    <input type="number" id="endvelocity" min="0" max="100" value="10" oninput="updateEndVelocityValue(this.value)">
+                    <div class="tooltip">End velocity of the bike</div>
                 </div>
 
-
+              
                 <div class="tooltip-container">
-                    <label for="gradient">gradient (deg): <span id="gradientValue">0</span></label>
-                    <input type="number" id="gradient" min="-20" max="20" value="0" oninput="updateGradientValue(this.value)">
-                    <div class="tooltip">The gradient of the terrain in degrees</div>
+                    <label for="time">time (s): <span id="timeValue">10</span></label><br>
+                    <input type="number" id="time" min="1" max="1000" value="10" oninput="updateTimeValue(this.value)">
+                    <div class="tooltip">The time of the acceleration</div>
                 </div>
 
-
-                <div class="tooltip-container">
-                    <label for="cda">Total Drag (CdA*100): <span id="cdaValue">25</span></label>
-                    <input type="number" id="cda" min="0" max="50" value="25" oninput="updateCdaValue(this.value)">
-                    <div class="tooltip">ProTT:18-20, TT:21-23, ProRoad:24-27, Road:28-34, Gravel:35-40, MTB:40-45</div>
-                </div>
-                
-
-
-                <div class="tooltip-container">
-                    <label for="crr">Tyre Friction (Crr*10000): <span id="crrValue">50</span></label>
-                    <input type="number" id="crr" min="0" max="100" value="50" oninput="updateCrrValue(this.value)">
-                    <div class="tooltip">GP5000TT:21, GP5000:30, RaceKingMTB:45, City:65</div>
-                </div>
-                
 
 
 
@@ -69,19 +59,12 @@
             </div>
             <div class="output">
                 <h2>Results</h2>
-                <p id="rollingresult"></p>
-                <p id="gravityresult"></p>
-                <p id="aeroresult"></p>
-                <p id="otherresult"></p>
-                <p id="totalresult"></p>
-                <p id="pro"></p>
-                <div class="image-container">
-                    <canvas id="energyChart"></canvas>
-                </div>
+                <p id="result"></p>
+                <p id="kineticresult"></p>
             </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="rolling.js"></script>
 </body>
 </html>
