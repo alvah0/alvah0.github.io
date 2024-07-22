@@ -82,7 +82,7 @@ function calculate() {
     let s = Number(document.getElementById("surface").value);
     let w = crrValue.width;
     let bcrr = crrValue.crr;
-    let crr = (bcrr * innerValue) * (((0.25 * s) ** 2.3)+ 1) * ((1 + 1 / w)**(5*s))
+    let crr = (bcrr * innerValue) * (((0.18 * s) ** 2.3)+ 1) * ((1 + 1 / w)**(5*s))
     let r = 1.292; 
     let bcda = 0.27;
     let cda = bcda * (0.0024 * w + 0.94)
